@@ -6,16 +6,18 @@ gpio.setup(12, gpio.IN)
 
 app = Flask(__name__)
 
+SWITCH_TYPE = 'NO'
+
 
 @app.route('/')
 def index():
-    status = 'Open' if get_pin_status() else 'Closed'
+    status = 'Closed' if get_pin_status() else 'Open'
     return render_template('index.html', status=status)
 
 
 def get_pin_status():
-    return gpio.input(12)
+    return gpio.input(12) ^ SWITCH_TYPE == 'NO'
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run('0.0.0.0')
