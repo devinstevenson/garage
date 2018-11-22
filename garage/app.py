@@ -11,12 +11,12 @@ SWITCH_TYPE = 'NO'
 
 @app.route('/')
 def index():
-    status = 'Closed' if get_pin_status() else 'Open'
+    status = 'Open' if get_pin_status() else 'Closed'
     return render_template('index.html', status=status)
 
 
 def get_pin_status():
-    return gpio.input(12) ^ SWITCH_TYPE == 'NO'
+    return gpio.input(12) ^ (SWITCH_TYPE == 'NO')
 
 
 if __name__ == "__main__":
