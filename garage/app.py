@@ -1,6 +1,6 @@
 import time
 import RPi.GPIO as gpio
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect
 
 REED_PIN = 12
 LED = 16
@@ -25,7 +25,7 @@ def index():
 @app.route('/door', methods=['POST'])
 def door():
     activate_door()
-    return render_template(url_for('index'))
+    return redirect(url_for('index'))
 
 
 def get_pin_status():
