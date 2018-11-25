@@ -22,6 +22,11 @@ def index():
     return render_template('index.html', status=status)
 
 
+@app.route('/door', method=['POST'])
+def door():
+    activate_door()
+
+
 def get_pin_status():
     """Read status of the reed switch pin"""
     return gpio.input(REED_PIN) ^ (SWITCH_TYPE == 'NO')
