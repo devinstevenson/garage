@@ -24,7 +24,9 @@ def index():
 
 @app.route('/door', methods=['POST'])
 def door():
+    set_led(high=True)
     activate_door()
+    set_led(high=False)
     return redirect(url_for('index'))
 
 
