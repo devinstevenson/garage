@@ -25,6 +25,7 @@ def index():
 @app.route('/door', methods=['POST'])
 def door():
     activate_door()
+    return render_template(url_for('index'))
 
 
 def get_pin_status():
