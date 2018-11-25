@@ -1,12 +1,15 @@
+import time
 import RPi.GPIO as gpio
 from flask import Flask, render_template
 
 REED_PIN = 12
 LED = 16
+DOOR = 23
 
 gpio.setmode(gpio.BCM)
 gpio.setup(REED_PIN, gpio.IN)
 gpio.setup(LED, gpio.OUT)
+gpio.setup(DOOR, gpio.OUT)
 
 app = Flask(__name__)
 
@@ -30,6 +33,13 @@ def set_led(high=True):
         gpio.output(LED, gpio.HIGH)
     else:
         gpio.output(LED, gpio.LOW)
+
+
+def activate_door():
+    """Activate relay for half a second"""
+    gpio.output(DOOR, gpio.HIGH)
+    time.sleep(0.5)
+    gpio.output(DOOR, gpio.LOW)
 
 
 if __name__ == "__main__":
