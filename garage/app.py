@@ -22,7 +22,7 @@ def index():
     return render_template('index.html', status=status)
 
 
-@app.route('/door', method=['POST'])
+@app.route('/door', methods=['POST'])
 def door():
     activate_door()
 
