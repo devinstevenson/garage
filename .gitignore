@@ -1,0 +1,16 @@
+*.pyc
+*.json
+*idea*
+*.png
+*.p
+*.zip
+*.gz
+funds
+*.DS_Store
+celerybeat-schedule
+*.cache*
+*.ipynb_*
+*.env*
+env
+build/*
+*.sqlite
