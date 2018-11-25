@@ -14,3 +14,4 @@ celerybeat-schedule
 env
 build/*
 *.sqlite
+nohup.out
